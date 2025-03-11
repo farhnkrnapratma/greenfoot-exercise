@@ -7,20 +7,24 @@ public class MyWorld extends World
         super(400, 600, 1);
         setBackground("bg.png");
         prepare();
+        sound();
     }
     
     private void prepare()
     {
         Hero hero = new Hero();
-        addObject(hero, 200, 500);
-        
-        for (int i = 0; i < 5; i++) {
-            Alien alien = new Alien();
-            addObject(alien, Greenfoot.getRandomNumber(400), Greenfoot.getRandomNumber(300));
-        }
-        
+        Alien alien = new Alien();
         Boss boss = new Boss();
         
-        addObject(boss, 100, 200);
+        addObject(hero, 200, 500);
+        for (int i = 0; i < 5; i++) {
+            addObject(alien, Greenfoot.getRandomNumber(400), Greenfoot.getRandomNumber(300));
+        }
+        addObject(boss, 100, 200);    
+    }
+    public void sound()
+    {
+        GreenfootSound bs = new GreenfootSound("bg0.wav");
+        bs.playLoop();
     }
 }
